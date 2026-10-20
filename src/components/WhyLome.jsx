@@ -6,6 +6,7 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
+import ScrollReveal from "./ScrollReveal.jsx";
 
 const reasons = [
   {
@@ -50,27 +51,33 @@ export default function WhyLome() {
   return (
     <section id="why" className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="section-kicker">Why LOME</p>
-          <h2 className="mt-4 font-display text-4xl text-ivory md:text-5xl">
-            The difference is in how we produce the moment.
-          </h2>
-        </div>
+        <ScrollReveal variant="fade-up">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="section-kicker">Why LOME</p>
+            <h2 className="mt-4 font-display text-4xl text-ivory md:text-5xl">
+              The difference is in how we produce the moment.
+            </h2>
+          </div>
+        </ScrollReveal>
+
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {reasons.map(({ n, icon: Icon, title, copy }) => (
-            <article
-              key={n}
-              className="rounded-[1.4rem] border border-gold/15 bg-gradient-to-b from-panel to-ink p-7"
-            >
-              <div className="flex items-center justify-between">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 text-gold">
-                  <Icon size={18} />
-                </span>
-                <span className="font-display text-lg text-gold/60">{n}</span>
-              </div>
-              <h3 className="mt-6 font-display text-2xl text-ivory">{title}</h3>
-              <p className="mt-3 text-sm leading-7 text-muted">{copy}</p>
-            </article>
+          {reasons.map(({ n, icon: Icon, title, copy }, i) => (
+            <ScrollReveal key={n} variant="fade-up" delay={i * 90}>
+              <article className="luxury-card group rounded-[1.4rem] border border-gold/15 bg-gradient-to-b from-panel to-ink p-7">
+                <div className="flex items-center justify-between">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 text-gold transition-all duration-300 group-hover:scale-110 group-hover:bg-gold group-hover:text-ink">
+                    <Icon size={18} />
+                  </span>
+                  <span className="font-display text-lg text-gold/60 transition-colors group-hover:text-gold-bright">
+                    {n}
+                  </span>
+                </div>
+                <h3 className="mt-6 font-display text-2xl text-ivory transition-colors group-hover:text-gold-bright">
+                  {title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-muted">{copy}</p>
+              </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>

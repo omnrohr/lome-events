@@ -31,6 +31,21 @@ body {
   color: #070707;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b261b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a45b;
+}
+
 .gold-line {
   height: 1px;
   background: linear-gradient(
@@ -49,6 +64,142 @@ body {
   font-size: 0.72rem;
   color: #c9a45b;
   font-weight: 500;
+}
+
+/* Luxury Interactive Card Styling */
+.luxury-card {
+  position: relative;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(201, 164, 91, 0.35),
+    transparent 50%,
+    rgba(201, 164, 91, 0.15)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+.luxury-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8),
+    0 0 30px -5px rgba(201, 164, 91, 0.18);
+}
+
+.luxury-card:hover::before {
+  opacity: 1;
+  background: linear-gradient(
+    135deg,
+    rgba(232, 201, 138, 0.8),
+    rgba(201, 164, 91, 0.3) 50%,
+    rgba(232, 201, 138, 0.6)
+  );
+}
+
+/* Dynamic Light Sweep Effect */
+.shine-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-sweep::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -70%;
+  width: 45%;
+  height: 220%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(232, 201, 138, 0.22) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  transition: all 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.shine-sweep:hover::after {
+  left: 140%;
+  opacity: 1;
+}
+
+/* Button Shimmer */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: 0.6s ease;
+}
+
+.btn-shimmer:hover::after {
+  left: 150%;
+}
+
+.btn-shimmer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(201, 164, 91, 0.35);
+}
+
+/* Ambient Pulse Animation */
+@keyframes ambientGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1) translate(-50%, -50%);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.12) translate(-50%, -50%);
+  }
+}
+
+.animate-ambient {
+  animation: ambientGlow 8s ease-in-out infinite;
+  transform-origin: top left;
+}
+
+/* Gentle Float */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: gentleFloat 5s ease-in-out infinite;
 }
 
 input,
