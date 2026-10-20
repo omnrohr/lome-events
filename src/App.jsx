@@ -11,6 +11,7 @@ import Portfolio from "./components/Portfolio.jsx";
 import Partners from "./components/Partners.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
+import BackgroundMusic from "./components/BackgroundMusic.jsx";
 
 export default function App() {
   const [showTopBtn, setShowTopBtn] = useState(false);
@@ -42,6 +43,9 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+
+      {/* Luxury Background Music Ambient Controller */}
+      <BackgroundMusic />
 
       {/* Floating Back to Top Button */}
       <button
